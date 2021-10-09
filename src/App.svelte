@@ -4,7 +4,7 @@
 
   function toggleOpen(e) {
     this.classList.toggle('open')
-    const panels = document.querySelectorAll('.panel')
+    const panels = document.querySelectorAll('div')
     panels.forEach(panel => {
       if (panel !== this) {
         panel.classList.remove('open')
@@ -19,19 +19,14 @@
   }
 </script>
 
-<div class="panels">
-  {#each panelData as data, index}
-    <Panel
-      {data}
-      {index}
-      on:click={toggleOpen}
-      on:transitionend={toggleActive}
-    />
+<main>
+  {#each panelData as data}
+    <Panel {data} on:click={toggleOpen} on:transitionend={toggleActive} />
   {/each}
-</div>
+</main>
 
 <style>
-  .panels {
+  main {
     min-height: 100vh;
     overflow: hidden;
     display: flex;

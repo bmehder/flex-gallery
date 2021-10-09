@@ -1,23 +1,16 @@
 <script>
   export let data = []
-  export let index = null
-
-  let panelEl
+  export let index = null //Magic !?
 </script>
 
-<div
-  bind:this={panelEl}
-  class="panel panel{index + 1}"
-  on:click
-  on:transitionend
->
+<div class={index} on:click on:transitionend>
   <p>{data.one}</p>
   <p>{data.two}</p>
   <p>{data.three}</p>
 </div>
 
 <style>
-  .panel {
+  div {
     background: #6b0f9c;
     box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
     color: white;
@@ -35,23 +28,23 @@
     display: flex;
     flex-direction: column;
   }
-  .panel1 {
+  div:nth-child(1) {
     background-image: url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500);
   }
-  .panel2 {
+  div:nth-child(2) {
     background-image: url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500);
   }
-  .panel3 {
+  div:nth-child(3) {
     background-image: url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d);
   }
-  .panel4 {
+  div:nth-child(4) {
     background-image: url(https://source.unsplash.com/ITjiVXcwVng/1500x1500);
   }
-  .panel5 {
+  div:nth-child(5) {
     background-image: url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500);
   }
   /* Flex Items */
-  .panel > * {
+  div > * {
     margin: 0;
     width: 100%;
     transition: transform 0.5s;
@@ -61,28 +54,28 @@
     align-items: center;
   }
 
-  .panel > *:first-child {
+  div > *:first-child {
     transform: translateY(-100%);
   }
-  .panel.open-active > *:first-child {
+  div.open-active > *:first-child {
     transform: translateY(0);
   }
 
-  .panel > *:last-child {
+  div > *:last-child {
     transform: translateY(100%);
   }
-  .panel.open-active > *:last-child {
+  div.open-active > *:last-child {
     transform: translateY(0);
   }
 
-  .panel p {
+  div p {
     text-transform: uppercase;
-    font-family: 'Amatic SC', cursive;
+    /* font-family: 'Amatic SC', cursive; */
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
     font-size: 2em;
   }
 
-  .panel p:nth-child(2) {
+  div p:nth-child(2) {
     font-size: 4em;
   }
 
@@ -92,7 +85,7 @@
   }
 
   @media only screen and (max-width: 600px) {
-    .panel p {
+    div p {
       font-size: 1em;
     }
   }
